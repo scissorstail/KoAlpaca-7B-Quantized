@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    shm_size: '64gb'
+    tty: true # Keep Running
+    volumes:
+      - ./.cache:/root/.cache
+      - ./:/workspace
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [ gpu ]
